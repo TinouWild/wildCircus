@@ -1,0 +1,31 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modifier une performance{% endblock %}
+
+{% block body %}
+
+    <div class="container my-3 bg-secondary">
+        <h1 class="text-dark my-3">Modifier un spectacle</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.date) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.time) }}
+            </div>
+        </div>
+        {{ form_row(form.backgroundFile) }}
+        {{ form_row(form.performers) }}
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-success mb-3">Modifier le spectacle</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/upload.js"></script>
+{% endblock %}

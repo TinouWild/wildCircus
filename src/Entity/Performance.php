@@ -5,9 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PerformanceRepository")
+ * @Vich\Uploadable
  */
 class Performance
 {
@@ -39,6 +42,18 @@ class Performance
     private $background;
 
     /**
+     * @Vich\UploadableField(mapping="performance_background", fileNameProperty="background")
+     * @var File
+     */
+    private $backgroundFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Performers", inversedBy="performances")
      */
     private $performers;
@@ -46,6 +61,20 @@ class Performance
     public function __construct()
     {
         $this->performers = new ArrayCollection();
+    }
+
+    public function setBackgroundFile(File $background = null)
+    {
+        $this->backgroundFile = $background;
+
+        if ($background) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getBackgroundFile()
+    {
+        return $this->backgroundFile;
     }
 
     public function getId(): ?int

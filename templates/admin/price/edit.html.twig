@@ -1,0 +1,20 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Editer un prix{% endblock %}
+
+{% block body %}
+
+<div class="container my-5 px-5">
+    <h1 class="text-center">Modifier un prix</h1>
+    <hr>
+    {{ form_start(form) }}
+    {{ form_row(form.price) }}
+    {{ form_row(form.visitor) }}
+    {{ form_row(form.period) }}
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </div>
+    {{ form_end(form) }}
+</div>
+
+{% endblock %}

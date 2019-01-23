@@ -14,7 +14,7 @@
             <i class="far fa-eye fa-2x"></i>
             Performances
         </a>
-        <a href="#" class="btn btn-outline-light">
+        <a href="{{ path('admin_price') }}" class="btn btn-outline-light">
             <i class="fas fa-dollar-sign fa-2x"></i>
             Prix
         </a>
@@ -22,8 +22,18 @@
             <i class="fas fa-home fa-2x"></i>
             About
         </a>
-        <a href="#" class="btn btn-success" target="_blank">
+        <a href="{{ path('home') }}" class="btn btn-success" target="_blank">
             <i class="fas fa-igloo fa-2x"></i>
         </a>
     </div>
 </div>
+
+{% for label,messages in app.flashes %}
+    <div class="container">
+        <div class="alert alert-{{ label }} mt-3">
+            {%  for message in messages %}
+                <p> {{ message }}</p>
+            {%  endfor %}
+        </div>
+    </div>
+{% endfor %}

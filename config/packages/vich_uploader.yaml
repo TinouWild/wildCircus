@@ -9,7 +9,11 @@ vich_uploader:
             inject_on_load: false
             delete_on_update: true
             delete_on_remove: true
-    #mappings:
-    #    products:
-    #        uri_prefix: /images/products
-    #        upload_destination: '%kernel.project_dir%/public/images/products'
+
+        about_background:
+            uri_prefix: /uploads/about/background
+            upload_destination: '%kernel.project_dir%/public/uploads/about/background'
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

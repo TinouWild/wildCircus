@@ -1,0 +1,36 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Section About{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid my-5 px-5">
+        <h1 class="text-center">Gestion de la section About</h1>
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="text-center">Editer votre page d'accueil</h2>
+                <hr>
+                {{ form_start(form) }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.backgroundFile) }}
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success">Editer le jumbotron</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="col-lg-6">
+                <h2 class="text-center">Aperçu de la section</h2>
+                <hr>
+                <div class="jumbotron jumbotron-fluid" style="background-image: url('/uploads/about/background/{{ about.background }}');">
+                    <div class="container">
+                        <h1 class="display-4 text-warning">Wild Circus, Bienvenue !</h1>
+                    </div>
+                </div>
+                <hr>
+                <h2 class="text-center">Aperçu du texte d'annonce</h2>
+                <p class="text-dark">{{ about.description | raw }}</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
